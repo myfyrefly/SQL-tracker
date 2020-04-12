@@ -1,0 +1,27 @@
+{
+  "name": "SQL-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myfyrefly/SQL-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myfyrefly/SQL-tracker/issues"
+  },
+  "homepage": "https://github.com/myfyrefly/SQL-tracker#readme",
+  "dependencies": {
+    "ascii-art": "^2.5.0",
+    "asciiart-logo": "^0.2.6",
+    "console.table": "^0.10.0",
+    "inquirer": "^7.1.0",
+    "mysql": "^2.18.1"
+  }
+}
