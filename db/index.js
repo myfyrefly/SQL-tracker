@@ -6,44 +6,44 @@ const connection = require('connection');
 //updateEemplo(),updateMana(), findAallRoles(), createRrole(), removeRole(), findAllDdepart(),createDdepar(), removeDdepa(), findaAllEemplobyDdepart(), findallEemployBbyMan(),
 class ManageStaff {
 
-    connection() {
-
+    connection(connection) {
+        this.connection = connection;
     }
     findAllEmployees() {
-
+        return this.connection.query('SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name, AS department, role.salary') // concat 
     }
-    findAllManagers(){
-
+    findAllManagers(employeeId){
+        return this.connection.query('SELECT id, first_name, last_name FROM employee WHERE id!=?', employeeId)
     }
-    createEmployees(){
-
+    createEmployees(employee){
+        return this.connection.query('INSERT INTO employee SET ?', employee);
     }
-    deleteEmployees(){
-
+    deleteEmployees(employeeId){
+        return this.connection.query('DELETE FROM employee WHERE id = ?', employeeId);
     }
-    updateEmployees(){
-
+    updateEmployees(employeeId, roleId){
+        return this.connection.query('UPDATE employee SET role_id = ? WHERE id = ?', [roleId, employeeId]);
     }
-    updateManagers(){
-
+    updateManagers(employeeId, managerId){
+        return this.connection.query('UPDATE employee SET manager_id = ? WHERE id = ?', [managerId, employeeId]);
     }
-    findAllRoles(){
-
+    /* findAllRoles(){
+        return this.connection.query('SELECT role_id, title,')
+    } */
+    createRoles(role){
+        return this.connection.query('INSERT INTO role SET ?', role);
     }
-    createRoles(){
-
+    removeRoles(roleId){
+        return this.connection.query('DELETE FROM role WHERE role_id = ?', roleId)
     }
-    removeRoles(){
+/*     findAllDepts(){
 
+    }*/
+    createDepts(department){
+        return this.connection.query('INSERT INTO department SET ?', department);
     }
-    findAllDepts(){
-
-    }
-    createDepts(){
-
-    }
-    removeDepts(){
-
+    removeDepts(departmentId){
+        return this.connection.query('DELETE FROM department WHERE id = ?', departmentId);
     }
     findAllEmployeeDepts(){
 
