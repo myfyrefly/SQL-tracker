@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "R3ydeTigres!",
-  database: "employee-tracker"
+  database: "employee_tracker"
 });
 
 connection.connect();
@@ -15,3 +15,5 @@ connection.connect();
 connection.query=util.promisify(connection.query);
 
 module.exports = connection;
+
+///nothing else here

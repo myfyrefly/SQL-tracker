@@ -1,7 +1,7 @@
 {
-  "name": "SQL-tracker",
+  "name": "employee-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple CMS that allows the user to view and manage departments, roles, and employees",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
