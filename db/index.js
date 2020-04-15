@@ -1,57 +1,37 @@
-const connection = require('connection');
+const connection = require("./connection");
+const newEmployeeQ = require('');
 
-//create a class that will relate to the db
+// this class relates to the db
 
-//methods to utilize: connection(), findAllEmplo(), findAllMmana(), createEemplo(), deleteEmplo(), 
-//updateEemplo(),updateMana(), findAallRoles(), createRrole(), removeRole(), findAllDdepart(),createDdepar(), removeDdepa(), findaAllEemplobyDdepart(), findallEemployBbyMan(),
 class ManageStaff {
-
-    connection(connection) {
-        this.connection = connection;
-    }
-    findAllEmployees() {
-        return this.connection.query('SELECT employee.id, employee.first_name, employee.last_name, role_table.title, department.name, AS department, role_table.salary') // concat 
-    }
-    findAllManagers(employeeId){
-        return this.connection.query('SELECT id, first_name, last_name FROM employee WHERE id!=?', employeeId)
-    }
-    createEmployees(employee){
-        return this.connection.query('INSERT INTO (employee) SET (?)', employee);
-    }
-    deleteEmployees(employeeId){
-        return this.connection.query('DELETE FROM employee WHERE id = ?', employeeId);
-    }
-    updateEmployees(employeeId, roleId){
-        return this.connection.query('UPDATE employee SET role_id = ? WHERE id = ?', [roleId, employeeId]);
-    }
-    updateManagers(employeeId, managerId){
-        return this.connection.query('UPDATE employee SET manager_id = ? WHERE id = ?', [managerId, employeeId]);
-    }
-    /* findAllRoles(){
-        return this.connection.query('SELECT role_id, title,')
-    } */
-    createRoles(role){
-        return this.connection.query('INSERT INTO role_table SET ?', role);
-    }
-    removeRoles(roleId){
-        return this.connection.query('DELETE FROM role_table WHERE role_id = ?', roleId)
-    }
-/*     findAllDepts(){
-
-    }*/
-    createDepts(department){
-        return this.connection.query('INSERT INTO department SET ?', department);
-    }
-    removeDepts(departmentId){
-        return this.connection.query('DELETE FROM department WHERE id = ?', departmentId);
-    }
-    findAllEmployeeDepts(){
-
-    }
-    findAllEmployeesByManager(){
-
-    }
+  connection(connection) {
+    this.connection = connection;
+  }
+  createEmployee() {
+      console.log('This feature is still in development!')
+    //return this.connection.query("INSERT INTO (employee) SET (?)", employee);
+  }
+  createRole(role) {
+    return this.connection.query("INSERT INTO role_table SET ?", role);
+  }
+  createDepts(department) {
+    return this.connection.query("INSERT INTO department SET ?", department);
+  }
+  viewAllEmployees() {
+    return this.connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, role_table.title, department.name, AS department, role_table.salary"
+    ); // concat
+  }
+  viewAllRoles() {
+    return this.connection.query("SELECT role_id, title,");
+  }
+  viewAllDepts() {}
+  updateEmployee(employeeId, roleId) {
+    return this.connection.query(
+      "UPDATE employee SET role_id = ? WHERE id = ?",
+      [roleId, employeeId]
+    );
+  }
 }
-//export the class 
-module.exports = new ManageStaff();
-//Sql syntax ====== Select Delete Update 
+
+module.exports = new ManageStaff(connection);
