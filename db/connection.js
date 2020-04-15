@@ -10,9 +10,9 @@ var connection = mysql.createConnection({
   database: "employee_tracker"
 });
 
-connection.connect();
 
-connection.query=util.promisify(connection.query);
+
+connection.query = util.promisify(connection.query);
 
 module.exports = connection;
 

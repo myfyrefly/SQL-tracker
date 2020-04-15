@@ -10,13 +10,13 @@ class ManageStaff {
         this.connection = connection;
     }
     findAllEmployees() {
-        return this.connection.query('SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name, AS department, role.salary') // concat 
+        return this.connection.query('SELECT employee.id, employee.first_name, employee.last_name, role_table.title, department.name, AS department, role_table.salary') // concat 
     }
     findAllManagers(employeeId){
         return this.connection.query('SELECT id, first_name, last_name FROM employee WHERE id!=?', employeeId)
     }
     createEmployees(employee){
-        return this.connection.query('INSERT INTO employee SET ?', employee);
+        return this.connection.query('INSERT INTO (employee) SET (?)', employee);
     }
     deleteEmployees(employeeId){
         return this.connection.query('DELETE FROM employee WHERE id = ?', employeeId);
@@ -31,10 +31,10 @@ class ManageStaff {
         return this.connection.query('SELECT role_id, title,')
     } */
     createRoles(role){
-        return this.connection.query('INSERT INTO role SET ?', role);
+        return this.connection.query('INSERT INTO role_table SET ?', role);
     }
     removeRoles(roleId){
-        return this.connection.query('DELETE FROM role WHERE role_id = ?', roleId)
+        return this.connection.query('DELETE FROM role_table WHERE role_id = ?', roleId)
     }
 /*     findAllDepts(){
 
