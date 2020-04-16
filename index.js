@@ -3,9 +3,14 @@ const db = require("./db");
 const inquirer = require("inquirer");
 // require the console.table
 require("console.table");
+const logo = require('asciiart-logo');
+const config = require('./package.json');
+console.log(logo(config).render());
 
 const manage = require("./db/index");
 const connection = require("./db/connection");
+
+
 
 // REQUIRED: below are the minimum requirements for this project, // BONUS: update employee managers, view employees by manager, delete departments, roles, and employees, view total budget of departments --- id combined salaries of all employees
 
