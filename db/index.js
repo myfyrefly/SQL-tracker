@@ -1,5 +1,37 @@
 const connection = require("./connection");
-const newEmployeeQ = require('');
+const inquirer = require('inquirer');
+
+const newEmployeeQ = [
+  {
+    type: "input",
+    name: "firstName",
+    message: "Enter the new employee's first name:",
+  },
+  {
+    type: "input",
+    name: "lastName",
+    message: "Enter the new employee's last name:",
+  },
+  {
+    type: "choice",
+    name: "role",
+    message: "Select the new employee's role:",
+    choices: [
+      "salesperson",
+      "accountant",
+      "HR representative",
+      "customer service representative",
+      "forklift operator",
+      "manager",
+    ],
+  },
+  {
+    type: "choice",
+    name: "manager",
+    message: "Select the corresponding manager",
+    choices: ["134", "089", "046", "025"],
+  },
+];
 
 // this class relates to the db
 
@@ -8,9 +40,9 @@ class ManageStaff {
     this.connection = connection;
   }
   createEmployee() {
-      console.log('This feature is still in development!')
-    //return this.connection.query("INSERT INTO (employee) SET (?)", employee);
+    console.log('create employee function was selected')
   }
+    
   createRole(role) {
     return this.connection.query("INSERT INTO role_table SET ?", role);
   }
@@ -25,7 +57,9 @@ class ManageStaff {
   viewAllRoles() {
     return this.connection.query("SELECT role_id, title,");
   }
-  viewAllDepts() {}
+  viewAllDepts() {
+    
+  }
   updateEmployee(employeeId, roleId) {
     return this.connection.query(
       "UPDATE employee SET role_id = ? WHERE id = ?",
